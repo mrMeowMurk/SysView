@@ -1,0 +1,45 @@
+theme[main]
+background = "#282a36"
+foreground = "#f8f8f2"
+selection = "#44475a"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
+
+theme[cpu]
+title = "purple"
+border = "purple"
+text = "foreground"
+graph = "purple"
+graph_low = "cyan"
+
+theme[mem]
+title = "pink"
+border = "pink"
+text = "foreground"
+graph = "pink"
+
+theme[net]
+title = "green"
+border = "green"
+text = "foreground"
+graph_upload = "red"
+graph_download = "green"
+
+theme[proc]
+title = "cyan"
+border = "cyan"
+text = "foreground"
+selection = "selection"
+highlight = "orange"
+
+theme[disk]
+title = "yellow"
+border = "yellow"
+text = "foreground"
+graph = "yellow" 
