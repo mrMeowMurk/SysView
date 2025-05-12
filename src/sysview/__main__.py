@@ -5,7 +5,6 @@ import time
 import signal
 import sys
 import msvcrt
-import os
 from rich.live import Live
 from rich.console import Console
 from rich.layout import Layout
@@ -16,41 +15,13 @@ import click
 from .system import SystemStats
 from .config import config
 from .draw import Drawer
-from .theme_loader import ThemeLoader
+from .themes import THEMES
 
 class SysView:
-    def __init__(self, theme_name="default"):
+    def __init__(self, theme="default"):
         self.console = Console()
         self.stats = SystemStats(config)
-        
-        # Инициализируем загрузчик тем
-        themes_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "themes")
-        self.theme_loader = ThemeLoader(themes_dir)
-        
-        # Загружаем тему
-        theme_data = self.theme_loader.get_theme(theme_name)
-        if theme_data:
-            self.theme = self.theme_loader.convert_to_rich_theme(theme_data)
-        else:
-            # Используем встроенную тему по умолчанию
-            self.theme = {
-                "header": "white on blue",
-                "footer": "white on blue",
-                "border": "white",
-                "title": "white",
-                "text": "white",
-                "highlight": "cyan",
-                "cpu": "blue",
-                "memory": "magenta",
-                "network": "green",
-                "disk": "yellow",
-                "process": "cyan",
-                "graph": "blue",
-                "progress_low": "green",
-                "progress_medium": "yellow",
-                "progress_high": "red"
-            }
-            
+        self.theme = THEMES.get(theme, THEMES["default"])
         self.drawer = Drawer(config, self.theme)
         self.layout = Layout()
         self.running = True
