@@ -97,5 +97,5 @@ Options:
 ---
 
 <div align="center">
-Сделано с ❤️ MeowMurk
+Сделано с ❤️ by MeowMurk
 </div>
